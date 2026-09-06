@@ -1,0 +1,1 @@
+export default function NotFound(){return <main id="main" className="section thanks"><span className="eyebrow">404 — NOT FOUND</span><h1>ページが見つかりませんでした。</h1><p>お探しのページは移動または削除された可能性があります。</p><a className="button dark-button" href="/">ホームに戻る →</a></main>}

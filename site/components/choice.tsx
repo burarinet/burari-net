@@ -1,0 +1,4 @@
+'use client';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+export function Choice({name,label,items,value,onChange,disabled=false}:{name:string;label:string;items:[string,string][];value:string;onChange:(value:string)=>void;disabled?:boolean}){
+return <div className="choice"><label id={name+'-label'} htmlFor={name}>{label}</label><Select name={name} value={value||null} onValueChange={v=>onChange(v??'')} disabled={disabled} items={items.map(([value,label])=>({value,label}))}><SelectTrigger id={name} aria-labelledby={name+'-label'} className="choice-trigger"><SelectValue placeholder="選択してください"/></SelectTrigger><SelectContent className="choice-popup">{items.map(([v,t])=><SelectItem key={v} value={v}>{t}</SelectItem>)}</SelectContent></Select></div>}

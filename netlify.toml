@@ -1,0 +1,30 @@
+[build]
+  base = "site"
+  command = "npm run build"
+  publish = "dist/client"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
+
+[[redirects]]
+  from = "/index.php"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/index.php/*"
+  to = "/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/!trash/sitemap"
+  to = "/sitemap/"
+  status = 301
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
