@@ -22,7 +22,7 @@ npm ci
 npm run dev
 ```
 
-開発プレビューは http://localhost:3000/ です。
+開発プレビューは起動時に空いているローカルポートを自動選択し、URLを表示します。
 
 ```powershell
 npm test
