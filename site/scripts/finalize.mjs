@@ -17,5 +17,10 @@ const forms=pages.filter(p=>p.fields.length).map(p=>{
  return `<form name="${name}" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden><input name="form-name" value="${name}"><input name="bot-field">`+p.fields.map(f=>`<input name="${f.name}">`).join('')+'</form>';
 });
 writeFileSync(path.join(root,'__forms.html'),'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>フォーム定義</title></head><body>'+forms.join('')+'</body></html>');
-for(const name of ['favicon.svg']){const file=path.join(root,name);if(existsSync(file))rmSync(file)}
+// These are build-time lookup files only. The browser loads the resolved chunks
+// referenced by each HTML page, not these manifests.
+for(const name of ['favicon.svg','vinext-client-entry-manifest.json','.vite']){
+ const file=path.join(root,name);
+ if(existsSync(file))rmSync(file,{recursive:true,force:true});
+}
 console.log('Static output finalized: 11 original pages, success page, 404, sitemap, 3 form definitions.');

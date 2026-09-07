@@ -22,6 +22,13 @@
   to = "/sitemap/"
   status = 301
 
+# Netlify parses this static form definition while building. Visitors do not
+# need to access it after deployment.
+[[redirects]]
+  from = "/__forms.html"
+  to = "/404.html"
+  status = 404
+
 [[headers]]
   for = "/*"
   [headers.values]
